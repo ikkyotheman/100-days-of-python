@@ -6,3 +6,4 @@ days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sun
 for day in days:
     print(day)
     print(days)
+
