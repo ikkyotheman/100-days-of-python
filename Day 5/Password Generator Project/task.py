@@ -16,8 +16,7 @@ for letter_input in range(0, nr_letters):
 print(password)
 
 
-
-
+# response still off
 #password =  + random.choice(numbers) + random.choice(symbols)
 #print(password)
 
