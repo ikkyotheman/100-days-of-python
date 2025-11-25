@@ -6,6 +6,18 @@ files:
   - name: solution.py
     visible: true
     learner_created: false
-status: Unchecked
+  - name: Grading Dictionary Challenge.py
+    visible: true
+    learner_created: true
+  - name: Grading Dictionary Solution.py
+    visible: true
+    learner_created: true
+  - name: Grading Dictionary Main.py
+    visible: true
+    learner_created: true
+  - name: ../Nested Lists and Dictionaries/Notes.py
+    visible: true
+    learner_created: true
+status: Solved
 record: -1
 post_submission_on_open: true
