@@ -2,45 +2,69 @@ import random
 import sys
 import art
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10] #TODO Notice "1" is not listed here
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
-def calculate_score():
+def player_hit():
+    global hit_me
     new_card = random.choice(cards)
-    player_cards.append(new_card)
-    global player_sum
-    player_sum= sum(player_cards)
-    return player_sum, player_cards
+    player_hand.append(new_card)
+    global player_score
+    player_score= sum(player_hand)
+    print(f"Your new card {new_card} is added to your hand: {player_hand} which is {player_score}")
+    if player_score > 21:
+        hit_me = False
+    return player_score, player_hand
+
+def computer_hit():
+    new_card = random.choice(cards)
+    computer_hand.append(new_card)
+    global computer_score
+    computer_score= sum(computer_hand)
+    print(f"Computer's new card {new_card} is added to hand: {computer_hand} which is {computer_score}")
+    if computer_score < 16:
+        computer_hit()
+    return computer_score, computer_hand
+
 gaming = True
 while gaming:
     play_blackjack = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ").lower()
     if play_blackjack == 'y':
         hit_me = True
         print(art.logo)
-        player_cards = [random.choice(cards), random.choice(cards)]
-        player_sum = sum(player_cards)
-        computer_first_card = [random.choice(cards)]
-        computer_score = sum(computer_first_card) # This needs to be changed from first card
-        player_status = f"Your cards: {player_cards}, current score: {player_sum}"
+        player_hand = [random.choice(cards), random.choice(cards)]
+        player_score = sum(player_hand)
+        computer_hand = [random.choice(cards)]
+        computer_score = sum(computer_hand) # This needs to be changed from first card
+        player_status = f"Your cards: {player_hand}, current score: {player_score}"
         print(player_status)
-        print(f"Computer's first card: {computer_first_card}")
+        computer_status = f"Computer card: {computer_hand}, current score: {computer_score}"
+        print(f"Computer's card is: {computer_hand}")
         while hit_me:
             add_player_card = input("type 'y' to get another card, type 'n' to pass: ")
             if add_player_card == 'y':
-               calculate_score()
-               print(player_cards)
-               print(player_sum)
-               if player_sum > 21:
-                   hit_me = False
-                   print(f"Your final hand: {player_cards}, final score: {player_sum}. \nComputer's final hand {computer_first_card}, final score: {computer_score} \nYou went over. You lose 😭")
-
+               player_hit()
+               # print(player_hand)
+               # print(player_score)
+               # if player_score > 21:
+               #     hit_me = False
             elif add_player_card == 'n':
                 hit_me = False
-                print(player_sum)
-                # TODO: Input what should happen after you settle with your cards - The computer needs to hit or stand
-                # TODO: And start doing the calculations and comparisons
+                print(f"Your score {player_score}")
             else:
                 print("Invalid input. Please type 'y' or 'n': ")
-
+        if player_score > 21:
+            print(f"Your final hand: {player_hand}, final score: {player_score}. \nComputer's final hand {computer_hand}, final score: {computer_score} \nYou went over. You lose 😭")
+        elif computer_score < 16:
+            computer_hit()
+            print(f"Computer score {computer_score}")
+            if computer_score > player_score and computer_score <= 21:
+                print('You Lose, Computer Wins! 😞')
+            elif computer_score > 21:
+                print('Computer Busts!, You Win! 😄')
+            elif player_score > computer_score and player_score <= 21:
+                print("You Win!!! 😄")
+            elif computer_score == player_score:
+                print("It's a Draw 😑")
 
     elif play_blackjack == 'n':
         gaming = False
