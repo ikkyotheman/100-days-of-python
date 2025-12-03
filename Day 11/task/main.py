@@ -73,6 +73,4 @@ while gaming:
         print("You have two options, buddy... Please type 'y' or 'n': ")
         gaming = True
 
-# TODO: The Ace can count as 11 or 1.
-# TODO: If dealer ends up with a hand smaller than 17, they must take another card.
-# TODO: ask player for another card.
+
