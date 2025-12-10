@@ -1,4 +1,8 @@
 import random
+import sys
+import logging
+logging.basicConfig(filename='programLog.txt', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Program started')
 from art import logo
 
 
@@ -72,9 +76,14 @@ def play_game():
     print(f"Your final hand: {user_cards}, final score: {user_score}")
     print(f"Computer's final hand: {computer_cards}, final score: {computer_score}")
     print(compare(user_score, computer_score)) # Notice here we are printing the return values from the compare function
+question = False
+while question == False:
+    while input("Do you want to play a game of Blackjack? Type 'y' for yes or 'n' for no: ").lower() == "y":
+        print("\n" * 20)
+        question = True
+        play_game()
+    else:
+        print("Goodbye")
+        sys.exit()
 
-
-while input("Do you want to play a game of Blackjack? Type 'y' for yes or 'n' for no: ").lower() == "y":
-    print("\n" * 20)
-    play_game()
 
