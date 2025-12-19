@@ -5,22 +5,20 @@ playing = True #This is for the loop to evaluate the guess
 
 def compare_num():
     global player_Lives
+    player_Lives -= 1
     global playing
     if guess == the_number:
         print(f"You got it! The answer was {the_number}")
         playing = False
-        return # What should I be returning here
+    elif player_Lives == 0:
+        print("You've run out of guesses, you lose.")
+        playing = False
     elif guess < the_number:
         print("Too low. Guess again.")
-        player_Lives -= 1
-        return
     elif guess > the_number:
         print("Too high. Guess again.")
-        player_Lives -= 1
-        return
     else:
         print("Guess again")
-        player_Lives -= 1
 
 print(art.logo)
 print("Welcome to The Number Guessing Game!")
@@ -35,7 +33,7 @@ while playing:
     print(f"You have {player_Lives} attempts remaining to guess the number.")
     guess = int(input("Make a guess: "))
     compare_num()
-    if player_Lives == 0:
-        print("You've run out of guesses, you lose.")
-        playing = False
+    # if player_Lives == 0:
+    #     print("You've run out of guesses, you lose.")
+    #     playing = False
 
