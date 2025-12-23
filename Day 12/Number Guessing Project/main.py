@@ -5,12 +5,15 @@ playing = True #This is for the loop to evaluate the guess
 
 def compare_num():
     global player_Lives
-    player_Lives -= 1
     global playing
     if guess == the_number:
         print(f"You got it! The answer was {the_number}")
         playing = False
-    elif player_Lives == 0:
+        return
+
+    player_Lives -= 1
+
+    if player_Lives == 0:
         print("You've run out of guesses, you lose.")
         playing = False
     elif guess < the_number:
