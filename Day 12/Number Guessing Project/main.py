@@ -16,6 +16,7 @@ def compare_num():
     if player_Lives == 0:
         print("You've run out of guesses, you lose.")
         playing = False
+    # elif guess != integer .... This is where I can't figure out how to
     elif guess < the_number:
         print("Too low. Guess again.")
     elif guess > the_number:
@@ -36,7 +37,4 @@ while playing:
     print(f"You have {player_Lives} attempts remaining to guess the number.")
     guess = int(input("Make a guess: "))
     compare_num()
-    # if player_Lives == 0:
-    #     print("You've run out of guesses, you lose.")
-    #     playing = False
 
