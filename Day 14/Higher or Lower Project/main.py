@@ -3,7 +3,7 @@ from art import vs
 import game_data
 import random
 print(logo)
-USERSCORE = 0
+userScore = 0
 selectionFirst = random.choice(game_data.data)
 game_data.data.remove(selectionFirst)
 selectionSecond = random.choice(game_data.data)
@@ -16,20 +16,20 @@ def compare(selection):
     print(selectionSecond['name'], selectionSecond['follower_count'])
     if selection == "A":
         if selectionFirst['follower_count'] > selectionSecond['follower_count']:
-            USERSCORE += 1
+            userScore += 1
             print("You win!")
-            print(f"Your score is: {USERSCORE}")
+            print(f"Your score is: {userScore}")
         else:
             print("You lose!")
-            print(f"Your score is: {USERSCORE}")
+            print(f"Your score is: {userScore}")
     elif selection == "B":
         if selectionSecond['follower_count'] > selectionFirst['follower_count']:
             print("You Win!")
-            USERSCORE += 1
-            print(f"Your score is: {USERSCORE}")
+            userScore += 1
+            print(f"Your score is: {userScore}")
         else:
             print("You Lose!")
-            print(f"Your score is: {USERSCORE}")
+            print(f"Your score is: {userScore}")
 
 
 # TODO the it asks "A, Name, Description and Country of Origin"
